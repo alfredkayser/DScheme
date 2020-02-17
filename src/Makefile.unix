@@ -1,0 +1,57 @@
+#*****************************************************************
+#* MODULE INFORMATION*
+#*********************
+#*      FILE     NAME:       scheme.MAK
+#*      SYSTEM   NAME:       scheme
+#*      ORIGINAL AUTHOR(S):  Alfred Kayser
+#*      VERSION  NUMBER:     1.00
+#*      CREATION DATE:       88/10/21
+#*
+#* DESCRIPTION: Makefile for the scheme system on AIX
+#**********************************************************************
+#* CHANGES INFORMATION **
+#************************
+#* REVISION:    $Revision:   1.0  $
+#* CHANGER:     $Author:   JAN  $
+#* WORKFILE:    $Workfile:   schos2.mak  $
+#* LOGFILE:     $Logfile:   C:/CPROG/scheme/VCS/schOS2.M_V  $
+#* LOGINFO:     $Log:   C:/CPROG/scheme/VCS/schOS2.M_V  $
+#  
+#     Rev 1.0   12 Oct 1989 11:49:08   JAN
+#  Initial revision.
+#*********************************************************************/
+
+#****************************************************************
+# Can't have both -O  and -g
+CFLAGS = -DUNIX -O
+CC = cc
+#****************************************************************
+#   CL: C files, YL: YACC files, LL: LEX files
+#   HL: Header files, OL: Object files, LI: Link Object names
+#
+
+HL = schinc.h schmac.h scheme.h
+
+OL = scheme.o schio.o schcel.o schrdr.o schprc.o \
+     schstr.o scherr.o schtim.o schtra.o schext.o scheva.o schbig.o schbi2.o
+
+LIB = scheme.a
+
+############################################################
+#   The dependencies
+#
+
+scheme : schtst.o schhdr.o $(LIB)
+	$(CC) $(CFLAGS) schtst.o schhdr.o $(LIB) -o scheme -lm
+
+$(LIB) : $(OL)
+	rm -f $(LIB)
+	ar qcu $(LIB) $(OL)
+	ranlib $(LIB)
+
+$(OL) :  $(HL)
+
+clean:
+	rm -f *.o
+	rm -f *.a
+	rm -f scheme

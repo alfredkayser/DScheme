@@ -1,0 +1,72 @@
+# Project: DScheme
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = schbi2.o schbig.o schcel.o scheme.o scherr.o scheva.o schext.o schhdr.o schio.o schprc.o schrdr.o schstr.o schtim.o schtra.o schtst.o $(RES)
+LINKOBJ  = schbi2.o schbig.o schcel.o scheme.o scherr.o scheva.o schext.o schhdr.o schio.o schprc.o schrdr.o schstr.o schtim.o schtra.o schtst.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib"  -g3 
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = DScheme.exe
+CXXFLAGS = $(CXXINCS)   -fverbose-asm -fexpensive-optimizations -O3 -g3
+CFLAGS = $(INCS)   -fverbose-asm -fexpensive-optimizations -O3 -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before DScheme.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "DScheme.exe" $(LIBS)
+
+schbi2.o: schbi2.c
+	$(CC) -c schbi2.c -o schbi2.o $(CFLAGS)
+
+schbig.o: schbig.c
+	$(CC) -c schbig.c -o schbig.o $(CFLAGS)
+
+schcel.o: schcel.c
+	$(CC) -c schcel.c -o schcel.o $(CFLAGS)
+
+scheme.o: scheme.c
+	$(CC) -c scheme.c -o scheme.o $(CFLAGS)
+
+scherr.o: scherr.c
+	$(CC) -c scherr.c -o scherr.o $(CFLAGS)
+
+scheva.o: scheva.c
+	$(CC) -c scheva.c -o scheva.o $(CFLAGS)
+
+schext.o: schext.c
+	$(CC) -c schext.c -o schext.o $(CFLAGS)
+
+schhdr.o: schhdr.c
+	$(CC) -c schhdr.c -o schhdr.o $(CFLAGS)
+
+schio.o: schio.c
+	$(CC) -c schio.c -o schio.o $(CFLAGS)
+
+schprc.o: schprc.c
+	$(CC) -c schprc.c -o schprc.o $(CFLAGS)
+
+schrdr.o: schrdr.c
+	$(CC) -c schrdr.c -o schrdr.o $(CFLAGS)
+
+schstr.o: schstr.c
+	$(CC) -c schstr.c -o schstr.o $(CFLAGS)
+
+schtim.o: schtim.c
+	$(CC) -c schtim.c -o schtim.o $(CFLAGS)
+
+schtra.o: schtra.c
+	$(CC) -c schtra.c -o schtra.o $(CFLAGS)
+
+schtst.o: schtst.c
+	$(CC) -c schtst.c -o schtst.o $(CFLAGS)
